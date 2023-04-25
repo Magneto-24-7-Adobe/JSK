@@ -2027,7 +2027,9 @@ Aws::String S3Client::GeneratePresignedUrl(const Aws::String& bucket,
         return {};
     }
     Aws::Endpoint::AWSEndpoint& endpoint = computeEndpointOutcome.GetResult();
-    endpoint.SetURL(endpoint.GetURL() + "/" + key);
+    URI uri(endpoint.GetURL());
+    uri.SetPath(uri.GetPath() + "/" + key);
+    endpoint.SetURL(uri.GetURIString());
     return AWSClient::GeneratePresignedUrl(endpoint, method, customizedHeaders, expirationInSeconds);
 }
 
