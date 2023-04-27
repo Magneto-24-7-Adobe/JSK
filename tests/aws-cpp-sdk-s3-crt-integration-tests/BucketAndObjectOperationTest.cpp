@@ -87,7 +87,7 @@ namespace
     static const char* URIESCAPE_KEY = "Esc ape+Me$";
     static const char* TEST_BUCKET_TAG = "IntegrationTestResource";
 
-    static const int TIMEOUT_MAX = 20;
+    static const int TIMEOUT_MAX = 60;
 
     void AppendUUID(Aws::String& bucketName)
     {
